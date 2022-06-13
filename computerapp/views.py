@@ -1,6 +1,6 @@
 from multiprocessing import context
 from django.shortcuts import render
-from computerapp.models import Personnel, Machine, Infrastruture
+from computerapp.models import Personnel, Machine, Infrastruture, Partenaires
 from django.shortcuts import render
 from django.contrib.auth import authenticate, login, logout
 from django.http import *
@@ -38,8 +38,8 @@ def infra_list_view(request):
     return render (request,'infra.html',context)
 
 def partenaires_list_view(request):
-    partenaire = Partenaires.objects.all()
-    context = {'partenaire': partenaire
+    partenaires = Partenaires.objects.all()
+    context = {'partenaires': partenaires
     }
     return render (request,'partenaire.html',context)
 

@@ -36,6 +36,9 @@
             <li class="nav-item">
               <a class="nav-link" href="{% url 'infra' %}">Infrastructure</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'partenaire' %}">Partenaire</a>
+            </li>
           </ul>
           {% endblock %}
         </div>
@@ -52,7 +55,7 @@
     <button type="submit">Valider</button>
   </from>
 {% block content %}
-{% for machine in machines %}
+
   <table class="table table-dark table-striped">
     <thead>
         <tr>
@@ -62,14 +65,16 @@
           <th scope="col">INFRASTRUTURE</th>
         </tr>
       </thead>
+      {% for machine in machines %}
         <tr>
           <th scope="row">1</th>
           <td> {{machine.id}} </td>
           <td> {{machine.nom}} </td>
           <td> Bureau</td>
         </tr>
+        {% endfor %}
     </table>
-{% endfor %}
+
 {% endblock %}
   
 </body>
