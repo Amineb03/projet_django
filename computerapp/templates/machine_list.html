@@ -25,7 +25,7 @@
           {% block sidebar %}
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="">Home</a>
+              <a class="nav-link active" aria-current="page" href= "{% url 'index' %}">Home</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{% url 'personnels' %}" >Utilisateurs</a>
@@ -45,26 +45,33 @@
 
 
   <div class="px-4 py-5 my-5 text-center">
-    <h1 class="display-5 fw-bold">HOME</h1>
-    
-    <div class="col-lg-6 mx-auto">
-      <p class="lead mb-4">Bienvenue sur le site officiel de R&T DEVELOPEMENT</p>
-      {% load static %}
-      </a><img src="{% static 'images/rtdev.png' %}" class="pp" alt=""></a>
-    </div>
-  </div>
-  <div class="centre">
-  <h2 class="titre"><strong>Connexion<strong></h2>
-    <form method="post"  role="form" action="{% url 'index' %}">
-      {% csrf_token %}
-      <input type="text" name="username" placeholder="Utilisateur">
-      <input type="password" name="password" placeholder="Mot de passe">
-      <input type="submit" value="login" />
-      </form>
-  </div>
-    
-
-
+    <h1 class="display-5 fw-bold">MACHINES</h1>
+  <from action="nom" method="post">
+    {% csrf_token %}
+    {{form.nom}}
+    <button type="submit">Valider</button>
+  </from>
+{% block content %}
+{% for machine in machines %}
+  <table class="table table-dark table-striped">
+    <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">ID</th>
+          <th scope="col">NOM</th>
+          <th scope="col">INFRASTRUTURE</th>
+        </tr>
+      </thead>
+        <tr>
+          <th scope="row">1</th>
+          <td> {{machine.id}} </td>
+          <td> {{machine.nom}} </td>
+          <td> Bureau</td>
+        </tr>
+    </table>
+{% endfor %}
+{% endblock %}
+  
 </body>
 <footer >
 <p>By Amine RT1</p>
